@@ -1,5 +1,12 @@
-# performance-test-platform
+# Performance-test-platform
 A Web application that supports tests HTTP and Dubbo performance.
+
+- 支持指定Dubbo server的IP直连测试
+- 支持任意Dubbo API测试
+- 支持动态上传你的API jar到Server端上下文
+- 支持__RANDOM_INT/ __RANDOM_STRING 随机数函数
+- 支持动态占位符变量，循环获取
+- ...
 
 # Quick start
 ## 1. Fork and run the spring boot application.
