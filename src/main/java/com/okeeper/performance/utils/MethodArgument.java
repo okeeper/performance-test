@@ -40,6 +40,10 @@ public class MethodArgument implements Serializable {
 	 */
 	private Class returnType;
 
+	public MethodArgument() {
+
+	}
+
 	public MethodArgument(String[] parameterTypes, Object[] actualParameterValues,Type[] actualParameterTypes, Class returnType) {
 		this.parameterTypes = parameterTypes;
 		this.actualParameterValues = actualParameterValues;

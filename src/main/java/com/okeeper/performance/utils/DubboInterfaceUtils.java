@@ -4,6 +4,7 @@ import com.alibaba.spring.util.BeanFactoryUtils;
 import com.okeeper.performance.common.Constants;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @Component
 public class DubboInterfaceUtils implements ApplicationContextAware {
 
@@ -106,7 +108,7 @@ public class DubboInterfaceUtils implements ApplicationContextAware {
         return argObjects;
     }
 
-    public MethodArgument getMethodArgument(String interfaceName, String method, String paramType, String paramValue) throws ClassNotFoundException {
+    public MethodArgument getMethodArgument(String interfaceName, String method, String paramType, String paramValue) {
         if(StringUtils.isNotEmpty(paramType) && StringUtils.isNotEmpty(paramValue)) {
             List<String> typeList = paramType.startsWith("[") ? JSON.parseArray(paramType, String.class) : Arrays.asList(paramType);
             List<String> valueList = paramValue.startsWith("[") ? JSON.parseArray(paramValue, String.class) : Arrays.asList(paramValue);
@@ -118,7 +120,13 @@ public class DubboInterfaceUtils implements ApplicationContextAware {
             }
 
             Object[] actualParameterValues = new Object[parameterTypes.length];
-            Method findMethod =  ClassUtils.getMethodByStringType(interfaceName,method, parameterTypes);
+            Method findMethod = null;
+            try {
+                findMethod = ClassUtils.getMethodByStringType(interfaceName, method, parameterTypes);
+            } catch (ClassNotFoundException e) {
+                log.error(e.getMessage(), e);
+                throw new IllegalArgumentException("未找到接口" + interfaceName + "#" + method );
+            }
             Type []methodTypes = findMethod.getGenericParameterTypes();
 
             if(methodTypes == null || methodTypes.length == 0) {
@@ -133,7 +141,7 @@ public class DubboInterfaceUtils implements ApplicationContextAware {
             }
             return new MethodArgument(parameterTypes, actualParameterValues, methodTypes, findMethod.getReturnType());
         }
-        return new MethodArgument(null, null, null, null);
+        return new MethodArgument();
     }
 
 

@@ -31,7 +31,7 @@ public class PerformanceUtils {
     @Autowired
     private HttpUtils httpUtils;
 
-    public String addDubboTask(GeneralDubboRequest request) throws ClassNotFoundException {
+    public String addDubboTask(GeneralDubboRequest request) {
         String taskName = request.getTaskName();
         if (StringUtils.isEmpty(taskName)) {
             //默认task名称

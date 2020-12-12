@@ -69,6 +69,9 @@ public class GeneralDubboRequest implements Serializable {
      */
     private String referenceUrl;
 
+    /**
+     * 注册中心地址
+     */
     private String registryAddress;
 
     @Min(1)

@@ -48,13 +48,8 @@ public class PerformanceController {
     @ResponseBody
     @RequestMapping("/generalTest")
     public String generalTest(@Valid GeneralDubboRequest request) {
-        try {
-            String resultFileName = performanceUtils.addDubboTask(request);
-            return "success. 结果输出文件:" + resultFileName;
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return e.toString();
-        }
+        String resultFileName = performanceUtils.addDubboTask(request);
+        return "success. 结果输出文件:" + resultFileName;
     }
 
 

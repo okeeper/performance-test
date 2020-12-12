@@ -37,7 +37,7 @@ import java.util.List;
 public class ClassUtils {
 
     public static Method getMethodByStringType(String interfaceName,
-                                                        String methodName, String[] paramStringTypes) {
+                                                        String methodName, String[] paramStringTypes) throws ClassNotFoundException {
         // 创建类
         //Class<?> class1 = Class.forName(interfaceName);
         Class class1 = loadClassFromExtJars(interfaceName);
@@ -54,15 +54,10 @@ public class ClassUtils {
     }
 
 
-    public static Class loadClassFromExtJars(String className) {
-        try {
+    public static Class loadClassFromExtJars(String className) throws ClassNotFoundException {
             URLClassLoader classLoader = new URLClassLoader(loadAllJarURLs(Constants.EXT_JAR_PATH), Thread.currentThread()
                     .getContextClassLoader());
             return classLoader.loadClass(className);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw new IllegalArgumentException("load error for " + className);
-        }
     }
 
     public static URL[] loadAllJarURLs(String path) {

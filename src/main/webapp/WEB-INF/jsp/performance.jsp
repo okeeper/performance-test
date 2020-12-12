@@ -26,6 +26,10 @@ Dubbo接口性能压测工具. 现在时间是  ${now}
         <td><input type="text" size="120" name="method" placeholder="方法名称，例如:placeOrder" width="400px"/></td>
     </tr>
     <tr>
+        <td width="50"><span>&nbsp;</span>注册中心地址</td>
+        <td><input type="text" size="120" name="registryAddress" placeholder="例如：nacos://192.168.1.10:1188, 指定IP端口时可不填" width="400px"/></td>
+    </tr>
+    <tr>
         <td width="50"><span>&nbsp;</span>指定ip端口</td>
         <td><input type="text" size="120" name="referenceUrl" placeholder="例如：192.168.1.131:32101, 可不填，默认从nacos订阅" width="400px"/></td>
     </tr>
