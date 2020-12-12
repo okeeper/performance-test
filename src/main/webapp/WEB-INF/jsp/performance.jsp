@@ -57,7 +57,7 @@ Dubbo接口性能压测工具. 现在时间是  ${now}
                     <td>变量名</td><td>json数组(每次发请求循环获取)</td><td>操作</td>
                 </tr>
                 <tr id="first">
-                    <td><input name="dynamicRow[0].name" type="text" placeholder="定义变量可替换\${variableName}占位符"/></td>
+                    <td><input name="dynamicRow[0].name" type="text" placeholder="定义变量可替换\${variable}"/></td>
                     <td valign="middle" style="vertical-align:middle">
                             <textarea name="dynamicRow[0].value" rows="1" cols="60" placeholder="json数组，例如：[1,2,3,4,5,6,7,8]"></textarea>
                     </td>
