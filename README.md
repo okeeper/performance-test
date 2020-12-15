@@ -29,15 +29,15 @@ will throw Exception of `找不到接口`
 upload url: `http://localhost:32188/uploadJar`, and you can also see the click tag after the '测试接口' input.
 ![](./doc/111.png)
 
-## Submit
+## 5.Submit
 If you fill in all parameters correctly. you can see this alert widow.
 ![](./doc/result_alert.png)
 
-## Observe the backend log
+## 6.Observe the backend log
 In the last step, Alert success does not necessarily mean success, there may be asynchronous errors.
 so you should observe the log in the backend.
 
-## See performance report
+## 7.See performance report
 The test report will output int the path `/data/logs/performance-test/report/`, and the detail file name it was alert you in the web Alert window.
 
 Example result.
